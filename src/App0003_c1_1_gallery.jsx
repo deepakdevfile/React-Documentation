@@ -1,4 +1,4 @@
-import Profile from "./App0003_1_2_profile";
+import Profile from "./App0003_c1_2_profile";
 
 export default function Gallery(){
     return (
