@@ -1,5 +1,5 @@
-export default function getImageUrl(person, size = 'b'){
+export default function getImageUrl(person, size = 's'){
     return (
-        './src/assets/' + person.imageId + size + ".jpg"
+        'https://react.dev/images/docs/scientists/' + person.imageId + size + ".jpg"
     );
 }
