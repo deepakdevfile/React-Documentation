@@ -8,66 +8,124 @@ const initialTodos = [
 
 let nextId = 3;
 
-function TaskApp(){
-    const [todos, setTodos] = useState(initialTodos);
+function AddTodo({ onAddTodo }){
     const [title, setTitle] = useState('');
 
-    function handleInputChange(e){
-        setTitle(e.target.value)
+    function handleChange(e){
+        setTitle(e.target.value);
     }
 
-    function handleCheckboxChange(todoId){
-        const newTodo = todos.map(todo => {
-            if(todo.id === todoId){
-                todo.done = !todo.done;
-                return todo;
-            } else{
-                return todo;
-            }
-            
-        })
-        setTodos(newTodo);
-    }
-
-    function handleAddClick(e){
-        const newTodos = [...todos];
-        newTodos.push({ id: nextId++, title: title, done: true });
-        setTodos(newTodos);
-    }
-
-    function handleEditClick(todoId, editedTodo){
-        const newTodos = todos.map(todo => {
-            if(todo.id !== todoId){
-                return todo;
-            } else {
-
-            }
-        })
-    }
-
-    function handleDeleteClick(todoId){
-        const newTodos = todos.filter(todo => todo.id !== todoId);
-        nextId--;
-        setTodos(newTodos);
+    function handleClick(){
+        setTitle('');
+        onAddTodo(title);
     }
 
     return(
         <>
-            <input onChange={handleInputChange} placeholder='Add todo' />
-            <button onClick={(e) => handleAddClick(e)}>Add</button>
+            <input
+                placeholder='Add todo'
+                value={title}
+                onChange={handleChange}
+            />
+            <button onClick={handleClick}>
+                Add
+            </button>
+        </>
+    )
+}
 
+function Task({ todo, onChange, onDelete }){
+    const [isEditing, setIsEditing ] = useState(false);
+
+    let todoContent;
+    if(isEditing){
+        todoContent = (
+            <>
+                <input 
+                    value={todo.title}
+                    onChange={e => {onChange({...todo, title: e.target.value});}}
+                />
+                <button onClick={() => setIsEditing(false)}>Save</button>
+            </>
+        );
+    } else{
+        todoContent = (
+            <>
+                {todo.title + " "}
+                <button onClick={() => setIsEditing(true)}>
+                    Edit
+                </button>
+            </>
+        );
+    }
+
+    return (
+        <label>
+            <input 
+                type="checkbox" 
+                checked={todo.done}
+                onChange={e => {onChange({...todo, done: e.target.checked});}}
+            />
+            {todoContent}
+            <button onClick={() => onDelete(todo.id)}>
+                Delete
+            </button>
+        </label>
+    )
+}
+
+function TaskList({todos, onChangeTodo, onDeleteTodo}){
+    return(
+        <>
             <ul>
                 {todos.map(todo => (
                     <li key={todo.id}>
-                        <input onChange={() => handleCheckboxChange(todo.id)} type="checkbox" checked={todo.done}/>
-                        {todo.title}
-                        {' '}
-                        <button onClick={() => handleEditClick(todo.id, todo.title)}>Edit</button>
-                        <button onClick={() => handleDeleteClick(todo.id)}>Delete</button>
+                        <Task 
+                            todo={todo}
+                            onChange={onChangeTodo}
+                            onDelete={onDeleteTodo}
+                        />
                     </li>
                 ))}
-                {}
             </ul>
+        </>
+    )
+}
+
+function TaskApp(){
+    const [todos, setTodos] = useState(initialTodos);
+
+    function handleAddTodo(title){
+        const newTodos = [...todos];
+        newTodos.push({id: nextId++, title: title, done: false});
+        setTodos(newTodos);
+    }
+
+    function handleChangeTodo(nextTodo){
+        const newTodos = todos.map(task => {
+            if(task.id === nextTodo.id){
+                return nextTodo;
+            } else {
+                return task
+            }
+        });
+        setTodos(newTodos);
+    }
+
+    function handleDeleteTodo(todoId){
+        const newTodos = todos.filter(t => t.id !== todoId)
+        setTodos(newTodos);
+        nextId--;
+    }
+    
+    return(
+        <>
+            <AddTodo onAddTodo={handleAddTodo}/>
+            <TaskList 
+                todos={todos} 
+                onChangeTodo={handleChangeTodo}
+                onDeleteTodo={handleDeleteTodo}
+            />
         </>
     )
 }
