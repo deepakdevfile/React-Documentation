@@ -1,7 +1,7 @@
 Learn react concepts form documentation 
 
 
-part 1 Describing the User Interface
+Part 1: Describing the User Interface
 App0001_counter.jsx
 App0002_c1_export_the_component.jsx
 App0002_c2_fix_the_return_statement.jsx
@@ -37,3 +37,30 @@ App0009_c2_Fix_a_broken_profile.jsx
 App0009_c3_Fix_a_broken_story_tray.jsx 
 App0009_Keeping_Components_Pure.jsx 
 App0010_inspire_me.jsx 
+
+Part 2: Adding interactivity
+App0011_responding_to_events.jsx
+App0012_c1_Fix_an_event_handler.jsx
+App0012_c2_Wire_up_the_events.jsx
+App0012_event_propagation.jsx
+App0013_c1_Complete_the_gallery.jsx
+App0013_c2_fixed_stucked_form_input.jsx
+App0013_c3_Fix_a_crash.jsx
+App0013_c4_Remove_unnecessary_state.jsx
+App0013_State_A_Components_Memory.jsx
+App0014_Render_And_Commit.jsx
+App0015_c1_Implement_a_traffic_light.jsx
+App0015_State_as_a_Snapshot.jsx
+App0016_c1_fixed_a_request_counter.jsx
+App0016_c2_Implement_the_state_queue_yourself.jsx
+App0016_Queueing_a_Series_of_State_Updates.jsx
+App0017_c1_Fix_incorrect_state_updates.jsx
+App0017_c2_Find_and_fix_the_mutation.jsx
+App0017_c3_Update_an_with_Immer.jsx
+App0017_Copying_objects_with_the_spread_syntax.jsx
+App0017_Updating_Objects_in_State.jsx
+App0018_c1_Update_an_item_in_the_shopping_cart.jsx
+App0018_c2_Remove_an_item_from_the_shopping_cart.jsx
+App0018_c3_Fix_the_mutations_using_non_mutative_methods.jsx
+App0018_c4_Fix_the_mutations_using_Immer_pending.jsx
+App0018_Updating_Arrays_in_State.jsx
