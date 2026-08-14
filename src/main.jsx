@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-// import './index.css'
-import App from "./App0020_Reacting_to_Input_with_State";
+import './App.css';
+import App from "./App0020_c2_Profile_editor";
 
 const root = createRoot(document.getElementById('root'));
 root.render(
