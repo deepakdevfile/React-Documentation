@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './App.css';
-import App from "./App0025_c1_Replace_prop_drilling_with_context";
+import App from "./App0026_Moving_all_wiring_into_a_single_file";
 
 const root = createRoot(document.getElementById('root'));
 root.render(
